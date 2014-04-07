@@ -1,0 +1,26 @@
+{
+  "name": "pooler",
+  "version": "0.0.1",
+  "description": "The Check splitter",
+  "keywords": [
+    "check",
+    "party"
+  ],
+  "authors": [
+    "Harish"
+  ],
+  "license": "Copyrighted",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "angular": "~1.2.16",
+    "jquery": "~2.1.0"
+  }
+}

@@ -1,0 +1,30 @@
+{{extend "../../layout/header"}}
+{{block place}}
+<script src="/js/home/home.js" type="text/javascript"></script>
+    <div class="container" ng-app="poolerApp" ng-controller="homeCtrl">
+    {{raw}}
+      <div class="alert alert-success" ng-if="success">{{success}}</div>
+    {{/raw}}
+      <div class="starter-template" >
+        <h1>You Occasions</h1>
+        
+      </div>
+       {{raw}}
+      <ul class="list-group" >
+	        <li class="list-group-item" ng-repeat="occasion in occasions"> {{occasion.name}} on {{occasion.date}} - Rs {{occasion.cost}}
+	        <button class="btn" ng-click="deleteOccasion(occasion,$event)">Remove</button></li>
+	    </ul>
+	    {{/raw}}
+      <button class="btn" ng-click="newOccasion=!newOccasion"> Add a new Occasion</button>
+
+      <div ng-show="newOccasion">
+        <form action="/occasion" method="post">
+        <label for="name">What was the Occasion</label>
+        <input type="text" name="name" id="name"/>
+        <label for="date">When did it occur</label>
+        <input type="date" name="date" id="date"/>
+        <input type="number" name="cost" id="cost"/>
+        <button class="btn" type="submit" >Save</button>
+      </div>
+    </div><!-- /.container -->
+ {{/block}} 

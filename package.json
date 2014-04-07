@@ -1,0 +1,12 @@
+{
+  "name": "pooler",
+  "version": "0.0.1",
+  "description": "pool you money and split it",
+  "main": "main.js",
+  "dependencies": {
+    "express": "3.x",
+    "kiwi": "*",
+    "nedb": "^0.10.5"
+  },
+  "private": true
+}
