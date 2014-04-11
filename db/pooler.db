@@ -1,5 +1,5 @@
-{"name":"Sarovar","date":"2014-04-02","cost":"500","_id":"79f56iMTXVEvGrJf"}
-{"name":"Rangla Panjab","date":"2014-04-01","cost":"500","_id":"7hiFGxHtsWiABfxU"}
-{"name":"Pol","date":"2014-04-03","cost":"800","_id":"5I4JuNZ8Bf0qBzJJ"}
-{"name":"New Occasion","date":"2014-04-16","cost":"500","_id":"gKHZiSb3arHAaXzS"}
-{"$$deleted":true,"_id":"5I4JuNZ8Bf0qBzJJ"}
+{"name":"Rangla Panjab","date":"2014-04-02","cost":900,"_id":"4uMDj3gCNvG8gv6V","payees":[{"name":"Mohan","cost":"844"},{"name":"Iuoj","cost":"896"}],"payers":[{"name":"Harish","cost":"1800"},{"name":"Kohan","cost":"800"}]}
+{"name":"Adwa","date":"2014-04-02","cost":800,"_id":"c2bmfOpXgmdOdm2k","payees":[],"payers":[{"name":"Jadwa","cost":"545"}]}
+{"name":"Adwa","date":"2014-04-02","cost":800,"_id":"c2bmfOpXgmdOdm2k","payees":[],"payers":[{"name":"Jadwa","cost":"545"},{"name":"New NMAE","cost":"900"}]}
+{"$$deleted":true,"_id":"4uMDj3gCNvG8gv6V"}
+{"$$deleted":true,"_id":"c2bmfOpXgmdOdm2k"}

@@ -16,7 +16,8 @@ app.use(express.session());
   
 app.get('/',home.get);
 
-app.post('/occasion', home.post);
+app.post('/occasion', occasion.add);
+app.put('/occasion', occasion.update);
 app.get('/occasion', occasion.getAll);
 app.get('/occasion/:id', occasion.getById);
 app.delete('/occasion/:id', occasion.delete);

@@ -1,30 +1,88 @@
 {{extend "/layout/header"}}
 {{block place}}
-<script src="/js/home/home.js" type="text/javascript"></script>
+<script src="/js/home/controller.js" type="text/javascript"></script>
     <div class="container" ng-app="poolerApp" ng-controller="homeCtrl">
     {{raw}}
       <div class="alert alert-success" ng-if="success">{{success}}</div>
     {{/raw}}
       <div class="starter-template" >
         <h1>You Occasions</h1>
-        
       </div>
        {{raw}}
       <ul class="list-group" >
-	        <li class="list-group-item" ng-repeat="occasion in occasions"> {{occasion.name}} on {{occasion.date}} - Rs {{occasion.cost}}
-	        <button class="btn" ng-click="deleteOccasion(occasion,$event)">Remove</button></li>
-	    </ul>
-	    {{/raw}}
-      <button class="btn" ng-click="newOccasion=!newOccasion"> Add a new Occasion</button>
+	        <li class="list-group-item" ng-repeat="occasion in occasions">
+	          <div><h4> {{occasion.name}}</h4> Date: {{occasion.date}}  Cost: Rs {{occasion.cost}}</div>
+	          <div class="row" ng-show="showDetail(occasion)">
+	            <div class="col-sm-6" >
+	              <h4>Payer</h4>
+	              <ul class="list-group">
+                 <li class="list-group-item" ng-repeat="payer in occasion.payers">{{payer.name}} - {{payer.cost}}</li>
+                </ul>	              
+	              <div ng-repeat="addPayer in occasion.addPayerList">
+                  <form class="form-inline" role="form">
+                    <div class="form-group">
+                      <label class="sr-only" for="payerName">Payer Name</label>
+                      <input ng-model="addPayer.name" class="form-control"  id="payerName" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only" for="payerCost"> Paid Cost</label>
+                      <input ng-model="addPayer.cost" class="form-control" id="payerCost" placeholder="Cost">  
+                    </div>
+                    <button type="button" class="btn btn-default btn-sm" ng-click="occasion.addPayerList.splice($index,1)">
+                      <span class="glyphicon glyphicon-remove-circle"></span> Remove
+                    </button>
+                  </form>
+                </div>
+	            </div>
+	            
+	            <div class="col-sm-6" >
+    	          <h4>Payee</h4> 
+                <ul class="list-group">
+                 <li class="list-group-item" ng-repeat="payee in occasion.payees">{{payee.name}} - {{payee.cost}}</li>
+                </ul>	              
+                <div ng-repeat="addPayee in occasion.addPayeeList">
+                  <form class="form-inline" role="form">
+                  <div class="form-group">
+                  <label class="sr-only" for="payeeName">Payee Name</label>
+                  <input ng-model="addPayee.name" class="form-control"  id="payeeName" placeholder="Name">
+                  </div>
+                  <div class="form-group">
+                  <label class="sr-only" for="payeeCost">Payee Cost</label>
+                  <input ng-model="addPayee.cost" class="form-control" id="payeeCost" placeholder="Cost">                  
+                  </div>
+                  <button type="button" class="btn btn-default btn-sm" ng-click="occasion.addPayeeList.splice($index,1)">
+                    <span class="glyphicon glyphicon-remove-circle"></span> Remove
+                  </button>
+                  </form>
+                </div>  	          
+	            </div>
+	            
+	          </div>
+              <div ng-show="occasion.addPayerList||occasion.addPayeeList">
+	            <button class="btn" ng-click="updateOccasion(occasion,$event)">Save</button>
+	            </div  >
+	        <button class="btn" ng-click="addPayer(occasion)">Add Payer</button>
+	        <button class="btn" ng-click="addPayee(occasion)">Add Payee</button>        
+	        <button class="btn" ng-click="deleteOccasion(occasion,$event)">Remove</button>
+	      </li>
+    </ul>
+    {{/raw}}
+    <button class="btn" ng-click="newOccasion=!newOccasion"> Add a new Occasion</button>
 
-      <div ng-show="newOccasion">
-        <form action="/occasion" method="post">
-        <label for="name">What was the Occasion</label>
-        <input type="text" name="name" id="name"/>
-        <label for="date">When did it occur</label>
-        <input type="date" name="date" id="date"/>
-        <input type="number" name="cost" id="cost"/>
-        <button class="btn" type="submit" >Save</button>
+    <div ng-show="newOccasion">
+      <div class="form-group">
+      <label for="name">What was the Occasion</label>
+      <input type="text" name="name" id="name" class="form-control" ng-model="occasion.name"/>
       </div>
-    </div><!-- /.container -->
+      <div class="form-group">
+      <label for="date">When did it occur</label>
+      <input type="date" name="date" id="date" class="form-control" ng-model="occasion.date"/>
+      </div>
+      <div class="form-group">
+      <label for="number">Cost</label>
+      <input type="number" name="cost" id="cost" class="form-control" ng-model="occasion.cost"/>
+      </div>
+      <button class="btn" ng-click="addOccasion()"  >Save</button>
+    </div>
+  </div><!-- /.container -->
  {{/block}} 
